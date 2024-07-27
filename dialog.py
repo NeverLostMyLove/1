@@ -20,28 +20,7 @@ model = AutoModelForCausalLM.from_pretrained(model_name_or_path)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
-# prompt = "今年是哪一年？"
-# messages = [
-#     {"role": "system", "content": "You are a helpful assistant."},
-#     {"role": "user", "content": prompt}
-# ]
-# text = tokenizer.apply_chat_template(
-#     messages,
-#     tokenize=False,
-#     add_generation_prompt=True
-# )
-# model_inputs = tokenizer([text], return_tensors="pt").to(device)
-#
-# generated_ids = model.generate(
-#     model_inputs.input_ids,
-#     max_new_tokens=512
-# )
-# generated_ids = [
-#     output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
-# ]
-#
-# response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-# print(response)
+
 # 定义一个函数来生成对话响应
 def generate_response(input_text, model, tokenizer, max_length=100, top_p=0.95, top_k=50):
     # 编码输入文本
